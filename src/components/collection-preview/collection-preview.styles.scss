@@ -1,0 +1,12 @@
+.collection-preview {
+  width: 100%;
+  display: flex;
+  .collection {
+    width: 100%;
+  }
+  .preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
