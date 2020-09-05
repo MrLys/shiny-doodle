@@ -3,8 +3,7 @@ import React from 'react';
 import './sign-in.styles.scss'
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-import {signInWithGoogle} from "../../firebase/firebase.util";
-
+import {auth, createUserProfileDocument, signInWithGoogle} from "../../firebase/firebase.util";
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
@@ -14,8 +13,18 @@ class SignIn extends React.Component {
             username: ""
         }
     }
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
+        const {email, password} = this.state;
+        try {
+           const { user } = auth.signInWithEmailAndPassword(email, password)
+            this.setState({
+                email: '',
+                password: '',
+            });
+        } catch (error) {
+           console.log(error);
+        }
     };
 
     handleChange = event => {
@@ -23,25 +32,26 @@ class SignIn extends React.Component {
         this.setState({[name]: value});
     };
     render() {
+        const {email, password, username} = this.state;
         return (
             <div className='sign-in'>
                <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.handleSubmit}>
-                    <FormInput name="email" type="email"
-                               value={this.state.email}
+                    <FormInput name="email" type="text"
+                               value={email}
                                handleChange={this.handleChange}
                                label='email'
                                required />
 
                     <label style={{display: "none"}}>username</label>
-                    <FormInput style={{display: "none"}} name="username"
-                           value={this.state.username}
-                               handleChange={this.handleChange}
-                    />
+                    <FormInput style={{display: "none"}}
+                               name="username"
+                               value={username}
+                               handleChange={this.handleChange} />
 
                     <FormInput name="password" type="password"
-                               value={this.state.password}
+                               value={password}
                                handleChange={this.handleChange}
                                label='password'
                                required />
