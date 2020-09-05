@@ -77,7 +77,7 @@ class SignUp extends React.Component {
                    <FormInput name="confirmPassword" type="confirmPassword"
                               value={confirmPassword}
                               handleChange={this.handleChange}
-                              label='confirmPassword'
+                              label='confirm Password'
                               required />
                    <div className='buttons'>
                        <CustomButton type='submit'> SIGN UP </CustomButton>
