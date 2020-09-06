@@ -5,11 +5,11 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { Switch, Route, Redirect } from "react-router-dom";
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import ShopPage from "./page/shop-page/shop.component";
+import ShopPage from "./pages/shop-page/shop.component";
 import Header from "./components/header/header.component";
-import HomePage from "./page/homepage/homepage.component";
-import CheckoutPage from "./page/checkout/checkout.component";
-import SignInAndUpPage from "./page/sign-in-and-up/sign-in-and-up.component";
+import HomePage from "./pages/homepage/homepage.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
+import SignInAndUpPage from "./pages/sign-in-and-up/sign-in-and-up.component";
 
 import './App.css';
 
@@ -19,7 +19,6 @@ class App extends React.Component {
     componentDidMount() {
         const { setCurrentUser } = this.props;
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            console.log("authChange", userAuth);
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
