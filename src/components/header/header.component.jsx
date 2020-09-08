@@ -13,7 +13,7 @@ import {
 } from "./header.styles";
 
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+import CartDropdownContainer from "../cart-dropdown/cart-dropdown.container";
 
 const Header = ({ currentUser, hidden }) => {
   const f = () => {
@@ -38,7 +38,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <CartIcon />
       </OptionContainer>
-      {hidden ? null : <CartDropDown />}
+      {hidden ? null : <CartDropdownContainer />}
     </HeaderContainer>
   );
 };
