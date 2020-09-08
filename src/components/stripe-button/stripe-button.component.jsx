@@ -1,6 +1,6 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { loadStripe } from '@stripe/stripe-js';
+//import { loadStripe } from '@stripe/stripe-js';
 //const publishableKey = loadStripe('pk_test_51HOKzrKXmkxDkHhHHsnadw8gZ323mcECdPmNOUmrfx8hfw30NueVELvX40MDusNYZahd6ZLICmdlBYzgJf50HK8b00nO9KC0ya');
 
 const StripeCheckoutButton = ({ price }) => {
