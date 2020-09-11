@@ -1,8 +1,7 @@
 import React from "react";
-import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import ShopPage from "./pages/shop-page/shop.component";
@@ -18,20 +17,20 @@ class App extends React.Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+    //this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //  if (userAuth) {
+    //    const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
+    //    userRef.onSnapshot((snapshot) => {
+    //      setCurrentUser({
+    //        id: snapshot.id,
+    //        ...snapshot.data(),
+    //      });
+    //    });
+    //  } else {
+    //    setCurrentUser(userAuth);
+    //  }
+    //});
   }
 
   componentWillUnmount() {
