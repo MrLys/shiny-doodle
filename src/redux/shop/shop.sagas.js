@@ -4,7 +4,7 @@ import {
   firestore,
 } from "../../firebase/firebase.util";
 import { fetchCollectionFailure, fetchCollectionSuccess } from "./shop.actions";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, all, put, takeLatest } from "redux-saga/effects";
 
 export function* fetchCollectionAsync() {
   try {
@@ -22,4 +22,8 @@ export function* fetchCollectionStart() {
     ShopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionStart)]);
 }
