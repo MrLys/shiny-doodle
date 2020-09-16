@@ -12,7 +12,7 @@ import SignInAndUpPage from "./pages/sign-in-and-up/sign-in-and-up.component";
 import "./App.css";
 import { checkUserSession } from "./redux/user/user.actions";
 
-const App = ({ checkUserSession }) => {
+const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
@@ -28,7 +28,7 @@ const App = ({ checkUserSession }) => {
           exact
           path="/signin"
           render={() =>
-            this.props.currentUser ? <Redirect to="/" /> : <SignInAndUpPage />
+            currentUser ? <Redirect to="/" /> : <SignInAndUpPage />
           }
         />
       </Switch>
